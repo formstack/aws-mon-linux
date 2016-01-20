@@ -598,9 +598,9 @@ if [ $NETWORK_CONNECTIONS -eq 1 ]; then
     echo "total_connections:$total_connections"
   fi
   if [ $VERIFY -eq 0 ]; then
-     aws cloudwatch put-metric-data --metric-name "ConnectionsTcp" --value "$tcp_connections" --unit "Connections" $CLOUDWATCH_OPTS
-     aws cloudwatch put-metric-data --metric-name "ConnectionsUdp" --value "$udp_connections" --unit "Connections" $CLOUDWATCH_OPTS
-     aws cloudwatch put-metric-data --metric-name "ConnectionsUnix" --value "$unix_connections" --unit "Connections" $CLOUDWATCH_OPTS
-     aws cloudwatch put-metric-data --metric-name "ConnectionsTotal" --value "$total_connections" --unit "Connections" $CLOUDWATCH_OPTS
+     aws cloudwatch put-metric-data --metric-name "ConnectionsTcp" --value "$tcp_connections" --unit "Count" $CLOUDWATCH_OPTS
+     aws cloudwatch put-metric-data --metric-name "ConnectionsUdp" --value "$udp_connections" --unit "Count" $CLOUDWATCH_OPTS
+     aws cloudwatch put-metric-data --metric-name "ConnectionsUnix" --value "$unix_connections" --unit "Count" $CLOUDWATCH_OPTS
+     aws cloudwatch put-metric-data --metric-name "ConnectionsTotal" --value "$total_connections" --unit "Count" $CLOUDWATCH_OPTS
   fi
 fi
