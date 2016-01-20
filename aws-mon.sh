@@ -586,10 +586,10 @@ fi
 
 # Network connections
 netstat_output=`netstat -n`
-tcp_connections=`echo "$netstat_output" | awk '/^(tcp)/ {count++} END {print count}'`
-udp_connections=`echo "$netstat_output" | awk '/^(udp)/ {count++} END {print count}'`
-unix_connections=`echo "$netstat_output" | awk '/^(unix)/ {count++} END {print count}'`
-total_connections=`echo "$netstat_output" | awk '/^(tcp|udp|unix)/ {count++} END {print count}'`
+tcp_connections=`echo "$netstat_output" | awk 'BEGIN { count=0 } /^(tcp)/ { count++ } END { print count }'`
+udp_connections=`echo "$netstat_output" | awk 'BEGIN { count=0 } /^(udp)/ { count++ } END { print count }'`
+unix_connections=`echo "$netstat_output" | awk 'BEGIN { count=0 } /^(unix)/ { count++ } END { print count }'`
+total_connections=`echo "$netstat_output" | awk 'BEGIN { count=0 } /^(tcp|udp|unix)/ { count++ } END { print count }'`
 if [ $NETWORK_CONNECTIONS -eq 1 ]; then
   if [ $VERBOSE -eq 1 ]; then
     echo "tcp_connections:$tcp_connections"
